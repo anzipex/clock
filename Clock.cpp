@@ -69,7 +69,7 @@ void DrawTexture(Texture *texture) {
 
     glDisable(GL_TEXTURE_2D);
 
-#ifdef NDEBUG
+#ifndef NDEBUG
     DrawDebugRect(texture->width(), texture->height());
 #endif // NDEBUG
 }
