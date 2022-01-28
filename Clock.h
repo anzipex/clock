@@ -1,5 +1,4 @@
-#ifndef CLOCK_H
-#define CLOCK_H
+#pragma once
 
 #include "textures.h"
 
@@ -61,5 +60,3 @@ private:
     float _rotateMinutes;
     float _rotateSeconds;
 };
-
-#endif /* CLOCK_H */

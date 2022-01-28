@@ -1,12 +1,11 @@
-#ifndef TEXTURES_H
-#define TEXTURES_H
+#pragma once
 
 #include <vector>
 
 using uchar = unsigned char;
 
 /**
- * @brief Работа с текстурами
+ * @brief Texture class. Works with textures
  */
 class Texture {
 public:
@@ -14,30 +13,28 @@ public:
     ~Texture();
 
     /**
-     * @brief Привязка текстуры
+     * @brief Bind texture
      */
     void bind() const;
-    
+
     /**
-     * @brief Ширина текстуры
-     * @return ширина
+     * @brief Texture width
+     * @return width value
      */
     int width() const;
-    
+
     /**
-     * @brief Высота текстуры
-     * @return высота
+     * @brief Texture height
+     * @return height
      */
     int height() const;
 
 private:
-    int _width; //!< ширина текстуры
-    int _height; //!< высота текстуры
-    unsigned int _texture; //!< текстура
+    int _width;
+    int _height;
+    unsigned int _texture;
 
-    void createOpenglTexture(const unsigned char *pixels); //!< создание текстуры
-    void loadFromFile(const char *filename); //!< загрузка текстуры из файла
-    std::vector< unsigned char > readPixels(FILE *file); //!< вектор пикселей
+    void createOpenglTexture(const unsigned char *pixels); //!< texture creation
+    void loadFromFile(const char *filename); //!< load texture from file
+    std::vector< unsigned char > readPixels(FILE *file); //!< vector of pixels
 };
-
-#endif /* TEXTURES_H */
