@@ -1,10 +1,3 @@
-/** 
- * @file textures.h
- * @brief SAMPLE_TEXT
- * @author a.akulin
- * @date January 25, 2018
- */
-
 #ifndef TEXTURES_H
 #define TEXTURES_H
 

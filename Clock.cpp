@@ -1,10 +1,3 @@
-/** 
- * @file Clock.cpp
- * @brief Realization of a class of Clock
- * @author a.akulin
- * @date January 25, 2018
- */
-
 #include <iostream>
 #include <GL/glut.h>
 #include "textures.h"

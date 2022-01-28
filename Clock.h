@@ -1,10 +1,3 @@
-/** 
- * @file Clock.h
- * @brief Description of class Clock
- * @author a.akulin
- * @date January 25, 2018
- */
-
 #ifndef CLOCK_H
 #define CLOCK_H
 

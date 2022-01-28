@@ -1,10 +1,3 @@
-/** 
- * @file main.cpp
- * @brief clock
- * @author a.akulin
- * @date January 25, 2018
- */
-
 #include <iostream>
 #include <chrono>
 #include <GL/glut.h>
