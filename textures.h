@@ -2,8 +2,6 @@
 
 #include <vector>
 
-using uchar = unsigned char;
-
 /**
  * @brief Texture class. Works with textures
  */
@@ -30,11 +28,11 @@ public:
     int height() const;
 
 private:
-    int _width;
-    int _height;
-    unsigned int _texture;
+    int width_;
+    int height_;
+    unsigned int texture_;
 
     void createOpenglTexture(const unsigned char *pixels); //!< texture creation
     void loadFromFile(const char *filename); //!< load texture from file
-    std::vector< unsigned char > readPixels(FILE *file); //!< vector of pixels
+    std::vector<unsigned char> readPixels(FILE *file) const; //!< vector of pixels
 };

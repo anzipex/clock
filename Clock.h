@@ -3,11 +3,11 @@
 #include "textures.h"
 
 /**
- * @brief Draw a rectangle with a texture
+ * @brief Draw rectangle with a texture
  * @param width
  * @param height
  */
-void DrawDebugRect(const float width, const float height);
+void DrawDebugRect(float width, float height);
 
 /**
  * @brief Draw a texture
@@ -31,9 +31,9 @@ public:
     void saveCurrentMinute(int minute);
     void saveCurrentSecond(int second);
 
-    const int getHour();
-    const int getMinute();
-    const int getSecond();
+    int getHour();
+    int getMinute();
+    int getSecond();
 
     void setRotateHourArrow(float degree);
     void setRotateMinuteArrow(float degree);
@@ -46,17 +46,17 @@ private:
     void drawMinuteArrow();
     void drawSecondArrow();
 
-    Texture _circle;
-    Texture _background;
-    Texture _hours;
-    Texture _minutes;
-    Texture _seconds;
+    Texture circle_;
+    Texture background_;
+    Texture hours_;
+    Texture minutes_;
+    Texture seconds_;
 
-    int _curHour;
-    int _curMinute;
-    int _curSecond;
+    int curHour_;
+    int curMinute_;
+    int curSecond_;
 
-    float _rotateHours;
-    float _rotateMinutes;
-    float _rotateSeconds;
+    float rotateHours_;
+    float rotateMinutes_;
+    float rotateSeconds_;
 };

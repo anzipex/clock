@@ -68,89 +68,89 @@ void DrawTexture(Texture *texture) {
 }
 
 Clock::Clock() :
-_circle("textures/circleMetal.png"),
-_background("textures/background.png"),
-_hours("textures/hourArrow.png"),
-_minutes("textures/minuteArrow.png"),
-_seconds("textures/secondArrow.png"),
-_curHour(0),
-_curMinute(0),
-_curSecond(0),
-_rotateHours(0),
-_rotateMinutes(0),
-_rotateSeconds(0) {
+circle_("textures/circleMetal.png"),
+background_("textures/background.png"),
+hours_("textures/hourArrow.png"),
+minutes_("textures/minuteArrow.png"),
+seconds_("textures/secondArrow.png"),
+curHour_(0),
+curMinute_(0),
+curSecond_(0),
+rotateHours_(0),
+rotateMinutes_(0),
+rotateSeconds_(0) {
 }
 
 void Clock::drawCircle() {
     glPushMatrix();
-    DrawTexture(&_circle);
+    DrawTexture(&circle_);
     glPopMatrix();
 }
 
 void Clock::drawHourArrow() {
     glPushMatrix();
-    glRotatef(_rotateHours, 0, 0, 1.0f);
+    glRotatef(rotateHours_, 0, 0, 1.0f);
     glTranslatef(0, 62.5f, 0);
-    DrawTexture(&_hours);
+    DrawTexture(&hours_);
     glPopMatrix();
 }
 
 void Clock::drawMinuteArrow() {
     glPushMatrix();
-    glRotatef(_rotateMinutes, 0, 0, 1.0f);
+    glRotatef(rotateMinutes_, 0, 0, 1.0f);
     glTranslatef(0, 90.0f, 0);
-    DrawTexture(&_minutes);
+    DrawTexture(&minutes_);
     glPopMatrix();
 }
 
 void Clock::drawSecondArrow() {
     glPushMatrix();
-    glRotatef(_rotateSeconds, 0, 0, 1.0f);
+    glRotatef(rotateSeconds_, 0, 0, 1.0f);
     glTranslatef(0, 91.0f, 0);
-    DrawTexture(&_seconds);
+    DrawTexture(&seconds_);
     glPopMatrix();
 }
 
 void Clock::drawBackground() {
     glPushMatrix();
-    DrawTexture(&_background);
+    DrawTexture(&background_);
     glPopMatrix();
 }
 
 void Clock::saveCurrentHour(int hour) {
-    _curHour = hour;
+    curHour_ = hour;
 }
 
 void Clock::saveCurrentMinute(int minute) {
-    _curMinute = minute;
+    curMinute_ = minute;
 }
 
 void Clock::saveCurrentSecond(int second) {
-    _curSecond = second;
+    curSecond_ = second;
 }
 
-const int Clock::getHour() {
-    return _curHour;
+int Clock::getHour() {
+    return curHour_;
 }
 
-const int Clock::getMinute() {
-    return _curMinute;
+int Clock::getMinute() {
+    return curMinute_;
 }
 
-const int Clock::getSecond() {
-    return _curSecond;
+int Clock::getSecond() {
+    return curSecond_;
 }
 
 void Clock::setRotateHourArrow(float degree) {
-    _rotateHours = -degree;
+    rotateHours_ = -degree;
 }
 
 void Clock::setRotateMinuteArrow(float degree) {
-    _rotateMinutes = -degree;
+    rotateMinutes_ = -degree;
 }
 
 void Clock::setRotateSecondArrow(float degree) {
-    _rotateSeconds = -degree;
+    rotateSeconds_ = -degree;
 }
 
 void Clock::draw() {

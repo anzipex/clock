@@ -5,13 +5,10 @@
 
 Clock *myclock = nullptr;
 uint64_t GetMillisec();
-uint64_t prevUpdateTime = GetMillisec();
-float updatePerSecond = 60;
-float accumulator = 0;
-uint64_t prevFrameTime = GetMillisec();
-float framesPerSecond = 60;
-uint64_t prevInputTime = GetMillisec();
-float inputPerSecond = 200;
+uint64_t PrevUpdateTime = GetMillisec();
+float UpdatePerSecond = 60;
+uint64_t PrevFrameTime = GetMillisec();
+float FPS = 60;
 
 uint64_t GetMillisec() {
     using namespace std;
@@ -26,9 +23,9 @@ void GetTime() {
     time_t now = time(0);
     tm *ltm = localtime(&now);
 
-    myclock->saveCurrentHour(30.0f * ltm->tm_hour);
-    myclock->saveCurrentMinute(6.0f * ltm->tm_min);
-    myclock->saveCurrentSecond(6.0f * ltm->tm_sec);
+    myclock->saveCurrentHour(30.0F * ltm->tm_hour);
+    myclock->saveCurrentMinute(6.0F * ltm->tm_min);
+    myclock->saveCurrentSecond(6.0F * ltm->tm_sec);
 }
 
 void DisplayFunc() {
@@ -45,27 +42,24 @@ void DisplayFunc() {
 
 void IdleFunc() {
     const auto time = GetMillisec();
-    auto updateTimeExp = time - prevUpdateTime;
+    auto updateTimeExp = time - PrevUpdateTime;
 
-    while (updateTimeExp > (1000 / updatePerSecond)) {
+    while (updateTimeExp > (1000 / UpdatePerSecond)) {
 
         myclock->setRotateHourArrow(myclock->getHour());
         myclock->setRotateMinuteArrow(myclock->getMinute());
         myclock->setRotateSecondArrow(myclock->getSecond());
 
-        updateTimeExp -= 1000 / updatePerSecond;
-        prevUpdateTime = time;
+        updateTimeExp -= 1000 / UpdatePerSecond;
+        PrevUpdateTime = time;
     }
 
-    const auto frameTimeExp = time - prevFrameTime;
+    const auto frameTimeExp = time - PrevFrameTime;
 
-    if (frameTimeExp > (1000 / framesPerSecond)) {
+    if (frameTimeExp > (1000 / FPS)) {
         glutPostRedisplay();
-        prevFrameTime = time;
+        PrevFrameTime = time;
     }
-
-    const auto inputTimeExp = time - prevInputTime;
-
 }
 
 void ReshapeFunc(int width, int height) {
@@ -79,8 +73,8 @@ void ReshapeFunc(int width, int height) {
 void DisplayClock(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_MULTISAMPLE);
-    glutInitWindowSize(600, 600);
-    glutCreateWindow("clock");
+    glutInitWindowSize(1024, 768);
+    glutCreateWindow("Clock");
     glutDisplayFunc(DisplayFunc);
     glutIdleFunc(IdleFunc);
     glutReshapeFunc(ReshapeFunc);
